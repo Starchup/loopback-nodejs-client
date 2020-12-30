@@ -8,7 +8,9 @@ const qs = require("qs");
 
 const handleErrors = response => {
   if (!response.ok) {
-    throw Error(response.statusText);
+    return response.json().then(error => {
+      throw Error(error.error.message);
+    });
   }
   return response.json();
 };

@@ -10,7 +10,9 @@ const LoopbackModel = require(__dirname + "/LoopbackModel.js");
 const handleErrors = response => {
   debug(response);
   if (!response.ok) {
-    throw Error(response.statusText);
+    return response.json().then(error => {
+      throw Error(error.error.message);
+    });
   }
   return response.json();
 };
