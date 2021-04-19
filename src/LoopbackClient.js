@@ -18,10 +18,10 @@ const handleErrors = response => {
 };
 
 class LoopbackClient {
-  constructor(baseUrl, user, password) {
+  constructor(baseUrl, user, password, token) {
     this.user = user;
     this.password = password;
-    this.token = null;
+    this.token = token;
     this.baseUrl = baseUrl;
     this.headers = {
       "Content-Type": "application/json",
